@@ -1,0 +1,13 @@
+Hello people,
+using System;
+ 
+namespace HelloWorld
+{
+    class Hello {         
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
+This is how you write 'Hello world' in C# :3
