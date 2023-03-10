@@ -54,3 +54,6 @@ await createStudent("John", "Doe", "johndoestuden@gmail.com", "password");
 await createStudent("Chris", "Redfield", "bobbobski@yahoo.com", "spiderman");
 await createStudent("Gorjan", "Stanoev", "gogostanoev225@gmail.com", "ihavethebesteducatorsatsedc");
 await createStudent("Bob", "Marley", "behappy@hotmail.com", "threelittlebirds");
+
+
+// Testing
