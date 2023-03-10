@@ -1,0 +1,36 @@
+[
+  {
+    "firstName": "Marko",
+    "lastName": "Gigoski",
+    "studentEmail": "whateveremail@gmail.com",
+    "password": "password"
+  },
+  {
+    "id": "d2de6e96-db8a-4086-beb0-d9968c1ba20d",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoestuden@gmail.com",
+    "password": "password"
+  },
+  {
+    "id": "d5a7c1ab-985f-48ee-bd59-85016a329b15",
+    "firstName": "Chris",
+    "lastName": "Redfield",
+    "email": "bobbobski@yahoo.com",
+    "password": "spiderman"
+  },
+  {
+    "id": "cf302617-c4a3-458a-9442-15c3754d95ff",
+    "firstName": "Gorjan",
+    "lastName": "Stanoev",
+    "email": "gogostanoev225@gmail.com",
+    "password": "ihavethebesteducatorsatsedc"
+  },
+  {
+    "id": "9f7df194-dc72-4240-96ff-32ee1482e1cc",
+    "firstName": "Bob",
+    "lastName": "Marley",
+    "email": "behappy@hotmail.com",
+    "password": "threelittlebirds"
+  }
+]

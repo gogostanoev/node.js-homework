@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Study node js",
+    "done": false
+  },
+  {
+    "id": 2,
+    "name": "Go to the gym",
+    "done": false
+  },
+  {
+    "id": 3,
+    "name": "Clean the room",
+    "done": false
+  },
+  {
+    "id": 4,
+    "name": "Lose your mind on node js",
+    "done": false
+  },
+  {
+    "id": 5,
+    "name": "Contemplate your life choices",
+    "done": false
+  }
+]
