@@ -1,3 +1,4 @@
+import { json } from "express";
 import fs from "fs";
 import {v4 as uuidv4} from "uuid";
 
@@ -67,9 +68,21 @@ export const addProduct = (path, name, price, rating, description, category, isI
 
 // Edit a product by id
 
-const editProductId = (path, name, price, rating, description, category, isInStock, productId) => {
+export const editProductId = (path, productId) => {
+    const arrayProducts = readProducts(path);
 
-    // const editProduct = updateProduct.filter((product) => product.id === )
+    const editProduct = arrayProducts.map((product) => {
+        if(product.id === productId){
+
+            return {
+                ...product,
+                rating: "1/5"
+            }
+        }
+        return product
+    })
+
+    writeToFile(path, JSON.stringify(editProduct, null, 2))
 }
 
 
@@ -82,43 +95,43 @@ export const removeProductId = (path, productId) => {
     const filteredProduct = arrayProducts.filter((product) => product.id !== productId);
     
     if(filteredProduct.length === arrayProducts.length){
-        writeToFile(path, JSON.stringify(arrayProducts, null, 2));
+        // writeToFile(path, JSON.stringify(arrayProducts, null, 2));
         return filteredProduct
     }
+    writeToFile(path, JSON.stringify(filteredProduct, null, 2));
 }
 
-
-// export const removeProductId = (path, productId) => {
-//     const arrayProducts = readProducts(path);
-
-//     const deletedProduct = arrayProducts.findIndex((product) => product.id === productId);
-    
-//     if(deletedProduct !== -1){
-//         arrayProducts.splice(deletedProduct, 1);
-//         writeToFile(path, JSON.stringify(arrayProducts, null, 2));
-//         return deletedProduct
-//     }
-// }
 
 // Remove all products from the products.json
 
 export const removeAllProducts = (path) => {
-    let arrayProducts = readProducts(path);
+    // let arrayProducts = readProducts(path);
 
-    if(arrayProducts){
-        arrayProducts = [];
-        writeToFile(path,JSON.stringify(arrayProducts, null, 2))
-        return arrayProducts
-    }
+    // if(arrayProducts){
+    //     arrayProducts = [];
+    //     writeToFile(path,JSON.stringify(arrayProducts, null, 2))
+    //     return arrayProducts
+    // }
+    writeToFile(path, JSON.stringify([], null, 2))
 }
 
 
 
 // Set product to be out of stock by id
 
-const outOfStock = (path, productId, status) => {
+export const outOfStock = (path, productId) => {
     const arrayProducts = readProducts(path);
 
-    const statusProduct = arrayProducts.filter((product) => product.id !== productId)
-    if(statusProduct){}
+    const statusProduct = arrayProducts.map((product) => {
+        if(product.id === productId){
+            
+            return {
+                ...product,
+                stock: false
+            }
+        }
+        return product
+    })
+
+    writeToFile(path, JSON.stringify(statusProduct, null, 2))
 }
