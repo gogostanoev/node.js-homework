@@ -38,9 +38,7 @@ export const readProductId = (path, productId) => {
     const readArrayProduct = readProducts(path);
 
     const readProduct = readArrayProduct.filter((product) => product.id === productId);
-    if(readProduct){
-        return readProduct
-    };
+    return readProduct
 };
 
 
