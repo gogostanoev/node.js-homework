@@ -1,0 +1,29 @@
+[
+  {
+    "id": "52db3020-99f3-45c3-a487-b10f86dbb4b1",
+    "name": "Osogovo sheep cheese",
+    "price": 300,
+    "rating": "5/5",
+    "description": "Fresh white cheese",
+    "category": "Food",
+    "stock": "true"
+  },
+  {
+    "id": "e853f986-89f3-4f96-b314-1019fabefe4e",
+    "name": "Interdental brush",
+    "price": 430,
+    "rating": "2/5",
+    "description": "Lacalut XXS brush",
+    "category": "Toothbrush",
+    "stock": "false"
+  },
+  {
+    "id": "764eecf0-0ff5-446d-9b02-2d80ff72de03",
+    "name": "Rimmel London Rita Ora",
+    "price": 100,
+    "rating": "4/5",
+    "description": "Nail polish",
+    "category": "Cosmetics",
+    "stock": "true"
+  }
+]
