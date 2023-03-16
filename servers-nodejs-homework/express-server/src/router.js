@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import { readProducts, readProductId, addProduct, removeProductId, removeAllProducts, outOfStock, editProductId } from "./file_service.js";
+import { readProducts, readProductId, addProduct, removeProductId, removeAllProducts, outOfStock, editProductId, addToCart } from "./file_service.js";
 
 
 const router = express.Router();
@@ -46,38 +46,41 @@ router.post("/create", (req, res) => {
 // Works perfectly as it should
 router.delete("/:id", (req, res) => {
 
-    const product = removeProductId("../db/products.json", req.params.id)
+    const product = readProducts("../db/products.json")
  
     if(product.length === 0){
         res.status(404).send({message: "Oops, it looks like there is nothing here"});
         return
-    }   
-    res.send({message: "The desired product has been successfully deleted"})    
+    }
+    removeProductId("../db/products.json", req.params.id)   
+    res.send("The desired product has been successfully deleted")    
 })
 
 
 // Works perfectly
 router.delete("/", (req, res) => {
 
-    const products = removeAllProducts("../db/products.json")
+    const products = readProducts("../db/products.json")
 
     if(products.length === 0){
         res.send("This section is already empty")
         return
     }
+    removeAllProducts("../db/products.json")
     res.send("All products have been successfully deleted")
 })
 
 
 router.patch("/:id", (req, res) => {
 
-    const product = editProductId("../db/products.json", req.params.id)
+    const product = readProducts("../db/products.json")
 
     if(product.length === 0){
         res.status(404).send({message: "The specified product does not exist"})
         
     }else {
-        res.send({message: "The product has been successfully edited"})
+        editProductId("../db/products.json", req.params.id)
+        res.send("The product has been successfully edited")
     }
 })
 
@@ -85,7 +88,7 @@ router.patch("/:id", (req, res) => {
 
 router.patch("/stock/:id", (req, res) => {
 
-    const product = outOfStock("../db/products.json", req.params.id)
+    const product = readProducts("../db/products.json")
 
     if(product.length === 0){
         res.status(404).send({message: "The specified product does not exist"})
@@ -94,8 +97,36 @@ router.patch("/stock/:id", (req, res) => {
         res.send({message: "The product is already out of stock"})
         
     }else{
-        res.sendStatus(200)
+        outOfStock("../db/products.json", req.params.id)
+        res.send("The desired product is set to be out of stock.")
     }
+})
+
+
+// router.post("/cart/:id", (req, res) => {
+
+//     const product = readProducts("../db/products.json")
+
+//     if(product.length === 0){
+//         res.status(404).send({message: "We are sorry to inform you, there isn't a product here"});
+//         return
+//     } 
+    
+//     res.send(addToCart("../db/cart.json", req.params.id))
+    
+// })
+
+router.post("/cart/:id", (req, res) => {
+
+    const product = readProducts("../db/products.json")
+
+    if(product.length === 0){
+        res.status(404).send({message: "We are sorry to inform you, there isn't a product here"});
+        return
+    } 
+    
+    res.send(addToCart(product, req.params.id, "../db/cart.json"))
+    
 })
 
 export default router;

@@ -24,6 +24,7 @@
 
 import express from "express";
 import router from "./router.js"
+import {appendToFile} from "./file_service.js"
 
 const app = express();
 
@@ -34,11 +35,17 @@ const host = "localhost";
 app.use(express.json());
 
 
-
 app.get("/", (req, res) => {
 
     res.send("<h1>You've accessed the default route!<h1/>")
 });
+
+
+
+app.use((req, res, next) => {
+    appendToFile("../db/logs.txt", "\nServer was accessed at " + new Date())
+    next()
+})
 
 
 app.use(router);

@@ -15,6 +15,9 @@ const readFromFile = (path) => {
 };
 
 
+export const appendToFile = (path, data) => {
+    fs.appendFileSync(path, data);
+};
 
 
 
@@ -94,7 +97,7 @@ export const removeProductId = (path, productId) => {
     const filteredProduct = arrayProducts.filter((product) => product.id !== productId);
     
     if(filteredProduct.length === arrayProducts.length){
-        // writeToFile(path, JSON.stringify(arrayProducts, null, 2));
+
         return filteredProduct
     }
     writeToFile(path, JSON.stringify(filteredProduct, null, 2));
@@ -104,13 +107,6 @@ export const removeProductId = (path, productId) => {
 // Remove all products from the products.json
 
 export const removeAllProducts = (path) => {
-    // let arrayProducts = readProducts(path);
-
-    // if(arrayProducts){
-    //     arrayProducts = [];
-    //     writeToFile(path,JSON.stringify(arrayProducts, null, 2))
-    //     return arrayProducts
-    // }
     writeToFile(path, JSON.stringify([], null, 2))
 }
 
@@ -133,4 +129,38 @@ export const outOfStock = (path, productId) => {
     })
 
     writeToFile(path, JSON.stringify(statusProduct, null, 2))
+}
+
+// Create route for add product (by id) to cart; use find and then push to cart 
+
+// export const addToCart = (path, productId) => {
+//     const arrayProducts = readProducts("../db/products.json");
+    
+//     const desiredProduct = arrayProducts.filter((product) => product.id === productId);
+//     const cart = readProducts(path);
+//     cart.push(desiredProduct[0]);
+
+//     // if(desiredProduct){
+//     //     const cart = readProducts(path);
+//     //     cart.push(desiredProduct);
+//     // } 
+
+//     writeToFile(path, JSON.stringify(cart, null, 2))
+//     return "Product has been successfully added to the cart!"
+// }   
+
+
+
+export const addToCart = (arr, productId, path) => {
+    
+    const desiredProduct = arr.filter((product) => product.id === productId);
+
+    if(desiredProduct){
+        const cart = readProducts(path);
+        cart.push(desiredProduct[0]);
+        writeToFile(path, JSON.stringify(cart, null, 2))
+    } 
+
+    // writeToFile(path, JSON.stringify(cart, null, 2))
+    return "Product has been successfully added to the cart!"
 }
