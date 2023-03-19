@@ -1,0 +1,50 @@
+[
+  {
+    "id": "a85267f8-91d1-48a6-b7e2-c3903fcf4796",
+    "title": "Introduction to JS",
+    "body": "A creative programming language",
+    "author": "Gjorge Dimitrov",
+    "date": "March 18th 2023, 11:04:26 pm",
+    "tags": [
+      "programming language",
+      "IT field",
+      "career"
+    ]
+  },
+  {
+    "id": "8a302791-596a-4cff-a91e-1ef2601be7ef",
+    "title": "A look into C#",
+    "body": "A strict programming language",
+    "author": "Aneta Stankovksa",
+    "date": "March 18th 2023, 11:05:57 pm",
+    "tags": [
+      "programming language",
+      "OOP",
+      "Microsoft tech"
+    ]
+  },
+  {
+    "id": "af39fe05-a53b-457d-863c-43b87d26a1ac",
+    "title": "CSS",
+    "body": "Hardest thing to learn",
+    "author": "Gorjan Stanoev",
+    "date": "March 19th 2023, 12:53:31 am",
+    "tags": [
+      "Hell let lose",
+      "creativity",
+      "back-end dev worst nightmare"
+    ]
+  },
+  {
+    "id": "9dff4ed7-2c4e-4c19-9d12-e16b9b5f2e1c",
+    "title": "Whatever",
+    "body": "Something",
+    "author": "John Doe",
+    "date": "March 19th 2023, 1:00:57 am",
+    "tags": [
+      "a",
+      "b",
+      "c"
+    ]
+  }
+]
