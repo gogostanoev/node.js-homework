@@ -93,5 +93,6 @@ blogRouter.get("/filter", async (req, res) => {
     // http://localhost:3000/blog/filter?tagOne=career&tagTwo=Microsoft tech
 
 });
+
 // Export the blogRouter so you can import it in different files and re-use it. Consider it as an extension
 export default blogRouter;
