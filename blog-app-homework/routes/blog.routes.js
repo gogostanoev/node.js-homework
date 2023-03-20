@@ -1,6 +1,8 @@
 import express from "express";
 import BlogController from "../controllers/blog.controller.js";
 
+// I create a constant that will be a new instance out of the controller for the task
+// Depending on which route is hit, the corresponding method for the controller will be applied 
 const blogController = new BlogController();
 
 // Routing refers to how an application’s endpoints (URIs) respond to client requests.

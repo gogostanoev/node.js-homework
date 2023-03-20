@@ -16,21 +16,33 @@ class BlogModel {
     };
 
 
+    // Second function, which will create a blog post
     async createBlog(title, body, author, date, tags){
+        // I create a constant that will read all the data that is stored in the "blog.json"
         const blogData = await fileService.viewBlog("../db/blog.json");
 
         // Here inside the constant I crate a new instance out of the Blog class
         const blog = new Blog(title, body, author, date, tags);
 
+        // After that, I will push the newly created object(blog) into the array(blogData)
         blogData.push(blog)
 
+        // And finally, the updated "blogData" array is written to the "blog.json"
         await fileService.writeToFile("../db/blog.json", JSON.stringify(blogData, null, 2))
     };
 
 
+    // Third function, which will update a blog post based on the corresponding ID
     async editBlogId(blogId){
+        // I create a constant that will read all the data that is stored in the "blog.json"
         const blogData = await fileService.viewBlog("../db/blog.json");
 
+        /**
+         * Then I use the "map" method on the "blogData" array to create a new array(editBlog)
+         * map() iterates over each object in the "blogData" array and checks if the id of the blog post
+         * matches the blogId. If it matches, the func. updates the properties. It creates a new object thanks to
+         * the spread operator(...blog), creating a new copy of the "blog" object with the updated properties
+         */
         const editBlog = blogData.map((blog) => {
             if(blog.id === blogId){
 
@@ -42,27 +54,37 @@ class BlogModel {
                 };
             };
 
+            // If the id does not match, the function returns the original blog post object as it is
             return blog
         });
 
+        // And finally, the updated array is written back to the "blog.json"
         await fileService.writeToFile("../db/blog.json", JSON.stringify(editBlog, null, 2))
     };
 
     
+    // Fourth function, which will delete a blog post based on the corresponding ID
     async deleteBlogId(blogId){
+        // Same as above
         const blogData = await fileService.viewBlog("../db/blog.json");
 
+        /**
+         * I create a constant that will filter(iterate) through the array and checks if the id of blog does not match the "blogId"
+         * If it does not match, the blog post object will be added to the newly created array(filteredBlog)
+         */
         const filteredBlog = blogData.filter((blog) => blog.id !== blogId);
 
         // if(!filteredBlog){
         //     return "The desired post does not exist"
         // };  
 
+        // If "filteredBlog" array has the same length like "blogData" array then return the value, meaning at least one post was deleted
         if(filteredBlog.length === blogData.length){
             
             return filteredBlog;
         };
 
+        // Same as above
         await fileService.writeToFile("../db/blog.json", JSON.stringify(filteredBlog, null, 2));
     };
 
