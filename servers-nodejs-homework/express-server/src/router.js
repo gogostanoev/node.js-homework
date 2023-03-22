@@ -73,9 +73,12 @@ router.delete("/", (req, res) => {
 
 router.patch("/:id", (req, res) => {
 
-    const product = readProducts("../db/products.json")
+    const product = readProducts("../db/products.json");
 
-    if(product.length === 0){
+    const desiredProduct = product.filter(p => p.id === req.params.id)
+    console.log(22222222, desiredProduct)
+
+    if(desiredProduct.length === 0){
         res.status(404).send({message: "The specified product does not exist"})
         
     }else {
@@ -88,12 +91,16 @@ router.patch("/:id", (req, res) => {
 
 router.patch("/stock/:id", (req, res) => {
 
-    const product = readProducts("../db/products.json")
+    const product = readProducts("../db/products.json");
+    console.log(product);
+
+    const desiredProduct = product.filter(p => p.id === req.params.id);
+    console.log(11111111111111, desiredProduct)
 
     if(product.length === 0){
         res.status(404).send({message: "The specified product does not exist"})
         
-    }else if(product.stock === false){
+    }else if(desiredProduct[0].stock === false){
         res.send({message: "The product is already out of stock"})
         
     }else{

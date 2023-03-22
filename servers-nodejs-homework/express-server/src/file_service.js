@@ -96,11 +96,10 @@ export const removeProductId = (path, productId) => {
 
     const filteredProduct = arrayProducts.filter((product) => product.id !== productId);
     
-    if(filteredProduct.length === arrayProducts.length){
+    if(filteredProduct.length !== arrayProducts.length){
 
-        return filteredProduct
+        writeToFile(path, JSON.stringify(filteredProduct, null, 2));
     }
-    writeToFile(path, JSON.stringify(filteredProduct, null, 2));
 }
 
 

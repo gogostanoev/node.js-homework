@@ -9,30 +9,21 @@
     "stock": true
   },
   {
-    "id": "764eecf0-0ff5-446d-9b02-2d80ff72de03",
-    "name": "Rimmel London Rita Ora",
-    "price": 100,
-    "rating": "4/5",
-    "description": "Nail polish",
-    "category": "Cosmetics",
+    "id": "ec44d29a-535c-4b60-a6ce-457f8f53af5f",
+    "name": "Osogovo sheep cheese",
+    "price": 350,
+    "rating": "5/5",
+    "description": "White cheese",
+    "category": "Dairy products",
     "stock": true
   },
   {
-    "id": "764eecf0-0ff5-446d-9b02-2d80ff72de03",
-    "name": "Rimmel London Rita Ora",
-    "price": 100,
-    "rating": "4/5",
-    "description": "Nail polish",
-    "category": "Cosmetics",
-    "stock": true
-  },
-  {
-    "id": "764eecf0-0ff5-446d-9b02-2d80ff72de03",
-    "name": "Rimmel London Rita Ora",
-    "price": 100,
-    "rating": "4/5",
-    "description": "Nail polish",
-    "category": "Cosmetics",
-    "stock": true
+    "id": "db44a62f-da3f-44b9-9124-758259157481",
+    "name": "Buggy trousers",
+    "price": 1150,
+    "rating": "2/5",
+    "description": "Men's bottom wear",
+    "category": "Clothes",
+    "stock": false
   }
 ]
