@@ -13,8 +13,8 @@ class BlogController {
     };
 
 
-    async createBlog(title, body, author, date, tags){
-        await blogModel.createBlog(title, body, author, date, tags)
+    async createBlog(title, body, author, tags){
+        await blogModel.createBlog(title, body, author, tags)
     };
 
     
@@ -24,7 +24,7 @@ class BlogController {
 
 
     async deleteBlogId(blogId){
-        await blogModel.deleteBlogId(blogId);
+        return await blogModel.deleteBlogId(blogId);
     };
 
 

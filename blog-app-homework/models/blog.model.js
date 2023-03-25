@@ -17,12 +17,12 @@ class BlogModel {
 
 
     // Second function, which will create a blog post
-    async createBlog(title, body, author, date, tags){
+    async createBlog(title, body, author, tags){
         // I create a constant that will read all the data that is stored in the "blog.json"
         const blogData = await fileService.viewBlog("../db/blog.json");
 
         // Here inside the constant I crate a new instance out of the Blog class
-        const blog = new Blog(title, body, author, date, tags);
+        const blog = new Blog(title, body, author, tags);
 
         // After that, I will push the newly created object(blog) into the array(blogData)
         blogData.push(blog)
@@ -43,49 +43,77 @@ class BlogModel {
          * matches the blogId. If it matches, the func. updates the properties. It creates a new object thanks to
          * the spread operator(...blog), creating a new copy of the "blog" object with the updated properties
          */
-        const editBlog = blogData.map((blog) => {
-            if(blog.id === blogId){
+        // const editBlog = blogData.map((blog) => {
+        //     if(blog.id === blogId){
 
+        //         return {
+        //             ...blog,
+        //             title: "Iron - Fe",
+        //             body: "Foods high in iron",
+        //             tags: ["healthy lifestyle", "vegetables", "organic"]
+        //         };
+        //     };
+
+        //     // If the id does not match, the function returns the original blog post object as it is
+        //     throw new Error(`Blog with id ${blogId} not found`);
+        //     // return blog
+        // });
+
+        let blogFound = false;
+
+        const editBlog = blogData.map((blog) => {
+            if (blog.id === blogId) {
+                blogFound = true;
                 return {
                     ...blog,
                     title: "Iron - Fe",
                     body: "Foods high in iron",
                     tags: ["healthy lifestyle", "vegetables", "organic"]
                 };
-            };
-
-            // If the id does not match, the function returns the original blog post object as it is
-            return blog
+            }
+            return blog;
         });
+        
+        if (!blogFound) {
+            throw new Error(`Blog with id ${blogId} not found`);
+        }
+        
+
 
         // And finally, the updated array is written back to the "blog.json"
         await fileService.writeToFile("../db/blog.json", JSON.stringify(editBlog, null, 2))
     };
 
-    
+
     // Fourth function, which will delete a blog post based on the corresponding ID
     async deleteBlogId(blogId){
         // Same as above
         const blogData = await fileService.viewBlog("../db/blog.json");
 
-        /**
-         * I create a constant that will filter(iterate) through the array and checks if the id of blog does not match the "blogId"
-         * If it does not match, the blog post object will be added to the newly created array(filteredBlog)
-         */
-        const filteredBlog = blogData.filter((blog) => blog.id !== blogId);
-
-        // if(!filteredBlog){
-        //     return "The desired post does not exist"
-        // };  
-
-        // If "filteredBlog" array has the same length like "blogData" array then return the value, meaning at least one post was deleted
-        if(filteredBlog.length === blogData.length){
+        // I create a constant that will filter(iterate) through the array and checks if the id of blog matches the provided "blogId"
+        const filteredBlog = blogData.filter((blog) => blog.id === blogId);
+        console.log(filteredBlog)
+        
+        // If we didn't find an object with the matchind ID we stop the execution and return false
+        if(filteredBlog.length === 0){
+            return false
+        };
+        
+        // I iterate through the array and
+        for(let i = 0; i < blogData.length; i++){
             
-            return filteredBlog;
+            // When the current iteration of "blogData" matches the first object in "filteredBlog" 
+            if(blogData[i] === filteredBlog[0]){
+                
+                // We remove the object from that array
+                blogData.splice(i, 1);
+                break
+            }         
         };
 
         // Same as above
-        await fileService.writeToFile("../db/blog.json", JSON.stringify(filteredBlog, null, 2));
+        await fileService.writeToFile("../db/blog.json", JSON.stringify(blogData, null, 2));
+        return true
     };
 
 

@@ -3,7 +3,7 @@ import moment from "moment";
 
 // I create a class called Blog which will have 6 properties that will help me define the task I need to do
 export class Blog {
-    constructor(title, body, author, date, tags){
+    constructor(title, body, author, tags){
         this.id = uuidv4();
         this.title = title;
         this.body = body;
