@@ -43,21 +43,6 @@ class BlogModel {
          * matches the blogId. If it matches, the func. updates the properties. It creates a new object thanks to
          * the spread operator(...blog), creating a new copy of the "blog" object with the updated properties
          */
-        // const editBlog = blogData.map((blog) => {
-        //     if(blog.id === blogId){
-
-        //         return {
-        //             ...blog,
-        //             title: "Iron - Fe",
-        //             body: "Foods high in iron",
-        //             tags: ["healthy lifestyle", "vegetables", "organic"]
-        //         };
-        //     };
-
-        //     // If the id does not match, the function returns the original blog post object as it is
-        //     throw new Error(`Blog with id ${blogId} not found`);
-        //     // return blog
-        // });
 
         let blogFound = false;
 
@@ -76,9 +61,7 @@ class BlogModel {
         
         if (!blogFound) {
             throw new Error(`Blog with id ${blogId} not found`);
-        }
-        
-
+        }       
 
         // And finally, the updated array is written back to the "blog.json"
         await fileService.writeToFile("../db/blog.json", JSON.stringify(editBlog, null, 2))
