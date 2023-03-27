@@ -1,3 +1,8 @@
+// Requirements - Implement auth mechanism:
+// Create one more json file, users.json, add few users in it;
+// Implement auth route for login.;
+// For the route that creates new blog post, allow only the logged in user to able to create new blog post.
+
 import express from "express";
 import { authSession } from "../sessions/auth.session.js";
 import fileService from "../shared-services/file-service.js";
