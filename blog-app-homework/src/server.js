@@ -16,6 +16,7 @@
 
 import express from "express";
 import blogRouter from "../routes/blog.routes.js";
+import authRouter from "../routes/auth.routes.js";
 
 
 const port = 3000;
@@ -33,13 +34,13 @@ server.get("/", (req, res) => {
     res.send("<h1>You've accessed the default route!<h1/>")
 });
 
+server.use(authRouter);
 server.use("/blog", blogRouter);
 
 
 server.get("*", (req, res) => {
     res.status(404).send("Route does not exist.");
 });
-
 
 
 server.post("*", (req, res) => {

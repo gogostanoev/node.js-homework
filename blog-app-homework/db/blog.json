@@ -46,5 +46,17 @@
       "b",
       "c"
     ]
+  },
+  {
+    "id": "e084a890-d60f-40d5-9775-69b3187a477d",
+    "title": "A.I. wars",
+    "body": "AI are starting to wage wars on each other",
+    "author": "John Doe",
+    "date": "March 27th 2023, 2:19:40 am",
+    "tags": [
+      "machine learning",
+      "artificial intelligence",
+      "tech"
+    ]
   }
 ]

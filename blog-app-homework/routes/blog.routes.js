@@ -1,5 +1,7 @@
 import express from "express";
 import BlogController from "../controllers/blog.controller.js";
+import { authSession } from "../sessions/auth.session.js";
+import { isLoggedInValidator } from "../middleware/session.auth.validator.js";
 
 // I create a constant that will be a new instance out of the controller for the task
 // Depending on which route is hit, the corresponding method for the controller will be applied 
@@ -19,7 +21,7 @@ blogRouter.get("/", async (req, res) => {
 
 
 
-blogRouter.post("/", async (req, res) => {
+blogRouter.post("/", authSession, isLoggedInValidator, async (req, res) => {
     const body = req.body;
 
     if(!body.title || !body.body || !body.author || !body.tags){
