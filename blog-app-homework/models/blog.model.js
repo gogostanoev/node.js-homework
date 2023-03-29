@@ -42,8 +42,7 @@ class BlogModel {
          * map() iterates over each object in the "blogData" array and checks if the id of the blog post
          * matches the blogId. If it matches, the func. updates the properties. It creates a new object thanks to
          * the spread operator(...blog), creating a new copy of the "blog" object with the updated properties
-         */
-
+        */
         let blogFound = false;
 
         const editBlog = blogData.map((blog) => {
